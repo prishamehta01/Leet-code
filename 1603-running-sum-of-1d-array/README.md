@@ -31,3 +31,9 @@
 	<li><code>1 &lt;= nums.length &lt;= 1000</code></li>
 	<li><code>-10^6&nbsp;&lt;= nums[i] &lt;=&nbsp;10^6</code></li>
 </ul>
+<p>
+	The approach used here is that we create a new array of integers of the same size using 
+int[ ] runningSum = new int[nums.length];
+Now, using a for loop which adds each element of the given array and saves it into the new array runningSum
+Finally, we return runningSum, which is the new array holding values of sum at each step or index.
+</p>
