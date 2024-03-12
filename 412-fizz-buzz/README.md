@@ -24,3 +24,4 @@
 <ul>
 	<li><code>1 &lt;= n &lt;= 10<sup>4</sup></code></li>
 </ul>
+<p> Using the concept of lists, which are mutable or can be resized unlike arrays.<br> A new list of strings is created where the i value iterates from 1 to n<br> Then, chceks for thr valid conditions and adds the string value to list<br> For the last integer value, we used List.add(string.valueOf(i))</p>
