@@ -41,3 +41,4 @@ The 2nd customer is the richest with a wealth of 10.</pre>
 	<li><code>1 &lt;= m, n &lt;= 50</code></li>
 	<li><code>1 &lt;= accounts[i][j] &lt;= 100</code></li>
 </ul>
+<p> Here we used the concept of 2D array.<br> two loops were used i.e, i and j, where i is the outer loop for rows<br> In the inner loop, we iterate for each element in a row and calculate the sum<br> Further, we check for max sum which is returned indicating the wealthiest customer.</p>
