@@ -42,3 +42,4 @@ Step 4) 1 is odd; subtract 1 and obtain 0.
 <ul>
 	<li><code>0 &lt;= num &lt;= 10<sup>6</sup></code></li>
 </ul>
+<p>A while loop is used to ensure looping until 0 is reached and count value is incremented with each step to count the total number of steps</p>
