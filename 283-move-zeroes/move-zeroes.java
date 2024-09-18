@@ -5,11 +5,12 @@ class Solution {
         {
             if(nums[i]!=0)
             {
-                int tmp = nums[i];
-                nums[i]=nums[j];
-                nums[j]=tmp;
-                j++;
-            }
+                nums[j++]=nums[i];
+            }  
+        }
+        while(j<nums.length)
+        {
+            nums[j++]=0;
         }
     }
 }
