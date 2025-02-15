@@ -7,10 +7,10 @@ class Solution {
                 count++;
             }
             else{
+                max_count = Math.max(max_count,count);
                 count=0;
             }
-            max_count = Math.max(max_count,count);
         }
-        return max_count;
+        return Math.max(max_count,count);
     }
 }
