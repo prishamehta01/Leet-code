@@ -1,15 +1,17 @@
 class Solution {
     public int[] rearrangeArray(int[] nums) {
-        ArrayList<Integer> pos = new ArrayList<>();
-        ArrayList<Integer> neg = new ArrayList<>();
+        int posIndex = 0, negIndex = 1;
+        int[] res = new int[nums.length];
         for(int i=0;i<nums.length;i++){
-            if(nums[i]>0) pos.add(nums[i]);
-            else neg.add(nums[i]);
+            if(nums[i]>0){
+                res[posIndex]=nums[i];
+                posIndex+=2;
+            }
+            else{
+                res[negIndex]=nums[i];
+                negIndex+=2;
+            }
         }
-        for(int i=0;i<nums.length/2;i++){
-            nums[2*i] = pos.get(i);
-            nums[(2*i)+1] = neg.get(i);
-        }
-        return nums;
+        return res;
     }
 }
