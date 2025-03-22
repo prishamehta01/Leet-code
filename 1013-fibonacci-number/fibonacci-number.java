@@ -3,9 +3,15 @@ class Solution {
         if(n==0){
             return 0;
         }
-        if(n==1 || n==2){
+        if(n==1){
             return 1;
         }
-        return fib(n-1)+fib(n-2);
+        int[] fibSeries = new int[n];
+        fibSeries[0] = 1;
+        fibSeries[1] = 1;
+        for(int i=2;i<n;i++){
+            fibSeries[i]=fibSeries[i-1]+fibSeries[i-2];
+        }
+        return fibSeries[n-1];
     }
 }
