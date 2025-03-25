@@ -1,29 +1,25 @@
 class Solution {
     public int romanToInt(String s) {
-        int[] values = {1, 5, 10, 50, 100, 500, 1000};
-        char[] symbols = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
-        
-        int res = 0;
-        int prevValue = 0;
-        
-        for (int i = s.length() - 1; i >= 0; i--) {
+        int[] nums = {1,5,10,50,100,500,1000};
+        char[] roman = {'I','V','X','L','C','D','M'};
+        int res = 0,prev = 0;
+        for(int i=s.length()-1;i>=0;i--){
             char c = s.charAt(i);
-            int value = 0;
-            for (int j = 0; j < symbols.length; j++) {
-                if (symbols[j] == c) {
-                    value = values[j];
+            int num = 0;
+            for(int j =0;j<roman.length;j++){
+                if(roman[j]==c){
+                    num = nums[j];
                     break;
                 }
             }
-            if (value < prevValue) {
-                res -= value;
-            } else {
-                res += value;
+            if(prev>num){
+                res-=num;
             }
-
-            prevValue = value;
+            else{
+                res+=num;
+            }
+            prev = num;
         }
-
         return res;
     }
 }
