@@ -1,12 +1,12 @@
 class Solution {
     public int minOperations(int[] nums, int k) {
         Set<Integer> s = new HashSet<>();
-        for(int n:nums){
-            if(n<k){
+        for(int i= 0;i<nums.length;i++){
+            if(nums[i]<k){
                 return -1;
             }
-            else if(n>k){
-                s.add(n);
+            else if(nums[i]>k){
+                s.add(nums[i]);
             }
         }
         return s.size();
