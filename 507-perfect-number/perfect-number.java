@@ -5,6 +5,9 @@ class Solution {
             if(num%i==0){
                 sum+=i;
             }
+            if(sum>num){
+                return false;
+            }
         }
         if(sum==num){
             return true;
