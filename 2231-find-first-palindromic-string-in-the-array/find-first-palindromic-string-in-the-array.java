@@ -8,11 +8,13 @@ class Solution {
         }
         return "";
     }
-    public boolean check(String str){
-        StringBuilder s = new StringBuilder(str);
-        if(s.reverse().toString().equals(str)){
-            return true;
+    public boolean check(String s){
+       int left = 0, right = s.length() - 1;
+        while (left < right) {
+            if (s.charAt(left++) != s.charAt(right--)) {
+                return false;
+            }
         }
-        return false;
+        return true;
     }
 }
