@@ -5,7 +5,7 @@ class Solution {
             if(moves.charAt(i)=='R') x++;
             else if(moves.charAt(i)=='L') x--;
             else if(moves.charAt(i)=='U') y++;
-            else if(moves.charAt(i)=='D') y--;
+            else y--;
         }
         return x==0 && y==0;
     }
