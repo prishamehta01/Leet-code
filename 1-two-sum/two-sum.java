@@ -1,30 +1,16 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        int[] sorted = nums.clone();
-        Arrays.sort(sorted);
-        int left=0,right=nums.length-1;
-        while(left<right){
-            int sum = sorted[left]+sorted[right];
-            if(sum==target){
-                int index1=-1,index2=-1;
-                for(int i=0;i<nums.length;i++){
-                    if(index1==-1 && nums[i]==sorted[left]){
-                        index1=i;
-                    }
-                    else if(nums[i]==sorted[right]){
-                        index2 = i;
-                    }
+        int[] res = new int[2];
+        for(int i=0;i<nums.length;i++){
+            int num = nums[i];
+            int remain = target-num;
+            for(int j=i+1;j<nums.length;j++){
+                if(nums[j]==remain){
+                    res[0] = i;
+                    res[1] = j;
                 }
-                return new int[]{index1,index2};
             }
-            else if(sum<target){
-                left++;
-            }
-            else{
-                right--;
-            }
-
         }
-        return new int[]{};
+        return res;
     }
 }
