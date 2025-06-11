@@ -9,6 +9,7 @@ class Solution {
             else{
                 res[0] = i;
                 res[1] = mp.get(target-nums[i]);
+                return res;
             }
             
         }
