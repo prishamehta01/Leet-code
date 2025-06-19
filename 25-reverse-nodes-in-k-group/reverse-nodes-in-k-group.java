@@ -26,6 +26,6 @@ class Solution {
             }
             return prev;
         }
-        return head;
+    return head;
     }
 }
