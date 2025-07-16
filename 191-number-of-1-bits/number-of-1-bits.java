@@ -6,7 +6,7 @@ class Solution {
             if(num == 1){
                 cnt++;
             }
-            n = n>> 1;
+            n = n >>> 1;
         }
         return cnt;
     }
