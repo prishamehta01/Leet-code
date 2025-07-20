@@ -1,14 +1,17 @@
-class Solution {
+public class Solution {
     public String reverseWords(String s) {
-        String[] strs = s.trim().split("\\s+");
-        int left=0,right=strs.length-1;
-        while(left<right){
-            String temp = strs[left];
-            strs[left] = strs[right];
-            strs[right] = temp;
-            left++;
-            right--;
+        // Trim leading/trailing spaces and split by one or more spaces
+        String[] words = s.trim().split("\\s+");
+        
+        // Reverse the array of words
+        StringBuilder reversed = new StringBuilder();
+        for (int i = words.length - 1; i >= 0; i--) {
+            reversed.append(words[i]);
+            if (i != 0) {
+                reversed.append(" ");
+            }
         }
-        return String.join(" ",strs);
+
+        return reversed.toString();
     }
 }
