@@ -1,22 +1,13 @@
-class Solution {
+public class Solution {
     public int hIndex(int[] citations) {
         Arrays.sort(citations);
-        int n = citations.length;
-        int left = 0, right = n - 1;
-        int hIndex = 0;
-
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            int h = n - mid; // number of papers with at least citations[mid] citations
-
-            if (citations[mid] >= h) {
-                hIndex = h; // candidate for h-index
-                right = mid - 1; // try to find a better (higher) h to the left
-            } else {
-                left = mid + 1; // move right
-            }
+        int h_index = 0;
+        for (int i = citations.length - 1; i >= 0; i--) {
+            if (citations[i] > h_index)
+                h_index++;
+            else
+                break;
         }
-
-        return hIndex;
+        return h_index;
     }
 }
