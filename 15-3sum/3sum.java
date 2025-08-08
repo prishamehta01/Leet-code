@@ -4,10 +4,10 @@ class Solution {
         int n = nums.length;
         Arrays.sort(nums);
         for(int i=0;i<n-2;i++){
-            if(i>0 && nums[i]==nums[i-1]) continue;
-            int target = -nums[i];
+            if(i>0 && nums[i-1]==nums[i]) continue;
             int left = i+1;
             int right = n-1;
+            int target = -nums[i];
             while(left<right){
                 if(nums[left]+nums[right]==target){
                     res.add(Arrays.asList(nums[i],nums[left],nums[right]));
