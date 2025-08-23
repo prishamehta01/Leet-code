@@ -9,7 +9,8 @@ class Solution {
                 hash[s.charAt(l)-'A']--;
                 l++;
             }
-            maxLen = Math.max(maxLen,r-l+1);
+            if((r-l+1)-maxFreq<=k)
+                maxLen = Math.max(maxLen,r-l+1);
         }
         return maxLen;
     }
