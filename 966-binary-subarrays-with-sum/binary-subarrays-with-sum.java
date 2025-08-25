@@ -1,16 +1,20 @@
 class Solution {
-    public int numSubarraysWithSum(int[] nums, int goal) {
-        HashMap<Integer,Integer> map = new HashMap<>();
-        int cnt=0;
-        map.put(0,1);
-        int sum = 0;
-        for(int i = 0;i<nums.length;i++){
-            sum+=nums[i];
-            if(map.containsKey(sum-goal)){
-                cnt+= map.get(sum-goal);
+    public int function(int[] nums,int k){
+        //cnt subarrays whose sum<=k
+        if(k<0) return 0;
+        int cnt=0,l=0,r=0,sum=0;
+        while(r<nums.length){
+            sum+=nums[r];
+            while(sum>k){
+                sum-=nums[l];
+                l++;
             }
-            map.put(sum,map.getOrDefault(sum,0)+1);
+            cnt += (r-l+1);
+            r++;
         }
         return cnt;
+    }
+    public int numSubarraysWithSum(int[] nums, int goal) {
+        return function(nums,goal)-function(nums,goal-1);
     }
 }
