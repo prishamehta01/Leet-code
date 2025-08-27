@@ -3,7 +3,7 @@ class Solution {
         //no of subarrays<=k
         HashMap<Integer,Integer> map = new HashMap<>();
         int cnt=0,l=0,r=0;
-        while(r<nums.length){
+        for(r=0;r<nums.length;r++){
             map.put(nums[r],map.getOrDefault(nums[r],0)+1);
             while(map.size()>k){
                 map.put(nums[l],map.get(nums[l])-1);
@@ -13,7 +13,6 @@ class Solution {
                 l++;
             }
             cnt=cnt+(r-l+1);
-            r++;
         }
         return cnt;
     }
