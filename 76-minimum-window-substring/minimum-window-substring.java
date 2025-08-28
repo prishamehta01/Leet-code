@@ -1,35 +1,23 @@
 class Solution {
     public String minWindow(String s, String t) {
-        if (s == null || t == null || s.length() == 0 || t.length() == 0 ||
-                s.length() < t.length()) {
-            return new String();
-        }
-        int[] map = new int[128];
-        int count = t.length();
-        int start = 0, end = 0, minLen = Integer.MAX_VALUE, startIndex = 0;
-        /// UPVOTE !
-        for (char c : t.toCharArray()) {
-            map[c]++;
-        }
-
-        char[] chS = s.toCharArray();
-
-        while (end < chS.length) {
-            if (map[chS[end++]]-- > 0) {
-                count--;
-            }
-            while (count == 0) {
-                if (end - start < minLen) {
-                    startIndex = start;
-                    minLen = end - start;
+        int n=s.length(),m=t.length();
+        int l=0,r=0,cnt=0,startI=-1,minLen=Integer.MAX_VALUE;
+        int[] hash = new int[256];
+        for(int i=0;i<m;i++) hash[t.charAt(i)]++;
+        while(r<n){
+            if(hash[s.charAt(r)]>0) cnt++;
+            hash[s.charAt(r)]--;
+            while(cnt==m){
+                if((r-l+1) < minLen){
+                    minLen = r-l+1;
+                    startI = l;
                 }
-                if (map[chS[start++]]++ == 0) {
-                    count++;
-                }
+                hash[s.charAt(l)]++;
+                if(hash[s.charAt(l)]>0) cnt--;
+                l++;
             }
+            r++;
         }
-
-        return minLen == Integer.MAX_VALUE ? new String() :
-                new String(chS, startIndex, minLen);
+        return startI==-1?"":s.substring(startI,startI+minLen);
     }
 }
