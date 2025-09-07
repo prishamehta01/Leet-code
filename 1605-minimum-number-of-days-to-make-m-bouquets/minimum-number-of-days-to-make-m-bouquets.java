@@ -15,6 +15,9 @@ class Solution {
         return numBoquets>=m?true:false;
     }
     public int minDays(int[] bloomDay, int m, int k) {
+        if ((long) m * k > bloomDay.length) {
+            return -1;
+        }
         int low = bloomDay[0],high=bloomDay[0];
         for(int i=1;i<bloomDay.length;i++){
             if(bloomDay[i]<low) low = bloomDay[i];
