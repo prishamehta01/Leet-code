@@ -1,35 +1,35 @@
 class Solution {
-    private boolean possible(int[] bloomDay, int m, int k, int day) {
-        int cnt = 0, bouquets = 0;
-        for (int d : bloomDay) {
-            if (d <= day) {
+    public boolean possible(int[] bloomDay,int m,int k,int day){
+        int cnt = 0;
+        int numBoquets = 0;
+        for(int i=0;i<bloomDay.length;i++){
+            if(bloomDay[i]<=day){
                 cnt++;
-                if (cnt == k) {
-                    bouquets++;
-                    cnt = 0;
-                }
-            } else {
+            }
+            else{
+                numBoquets += (cnt/k);
                 cnt = 0;
             }
-            if (bouquets >= m) return true; // early stop
         }
-        return false;
+        numBoquets += (cnt/k);
+        return numBoquets>=m;
     }
-
     public int minDays(int[] bloomDay, int m, int k) {
-        if ((long) m * k > bloomDay.length) return -1; // impossible case
-
-        int low = Arrays.stream(bloomDay).min().getAsInt();
-        int high = Arrays.stream(bloomDay).max().getAsInt();
-        int ans = -1;
-
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            if (possible(bloomDay, m, k, mid)) {
+        int low = bloomDay[0],high=bloomDay[0];
+        for(int b:bloomDay){
+            if(b<low) low = b;
+            else if(b>high) high = b;
+        }
+        
+        int ans=-1;
+        while(low<=high){
+            int mid = (low+high)/2;
+            if(possible(bloomDay,m,k,mid)){
                 ans = mid;
-                high = mid - 1;
-            } else {
-                low = mid + 1;
+                high = mid-1;
+            }
+            else{
+                low = mid+1;
             }
         }
         return ans;
