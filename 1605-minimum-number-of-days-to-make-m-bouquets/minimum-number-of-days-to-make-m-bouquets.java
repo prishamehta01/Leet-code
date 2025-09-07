@@ -15,9 +15,13 @@ class Solution {
         return numBoquets>=m?true:false;
     }
     public int minDays(int[] bloomDay, int m, int k) {
-        int min = Arrays.stream(bloomDay).min().getAsInt();
-        int max = Arrays.stream(bloomDay).max().getAsInt();
-        int low=min,high=max,ans=-1;
+        int low = bloomDay[0],high=bloomDay[0];
+        for(int b:bloomDay){
+            if(b<low) low = b;
+            else if(b>high) high = b;
+        }
+        
+        int ans=-1;
         while(low<=high){
             int mid = (low+high)/2;
             if(possible(bloomDay,m,k,mid)){
