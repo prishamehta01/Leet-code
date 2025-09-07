@@ -16,9 +16,9 @@ class Solution {
     }
     public int minDays(int[] bloomDay, int m, int k) {
         int low = bloomDay[0],high=bloomDay[0];
-        for(int b:bloomDay){
-            if(b<low) low = b;
-            else if(b>high) high = b;
+        for(int i=1;i<bloomDay.length;i++){
+            if(bloomDay[i]<low) low = bloomDay[i];
+            else if(bloomDay[i]>high) high = bloomDay[i];
         }
         
         int ans=-1;
