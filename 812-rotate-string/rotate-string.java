@@ -1,10 +1,11 @@
 class Solution {
     public boolean rotateString(String s, String goal) {
-        if(s.length()!=goal.length()) return false;
-        for(int i=0;i<s.length();i++){
-            String leftRotated = s.substring(i)+s.substring(0,i);
-            if(leftRotated.equals(goal)) return true;
+        if (s.length() != goal.length()) {
+            // Return false if lengths don't match
+            return false;
         }
+        String newStr = s+s;
+        if(newStr.contains(goal)) return true;
         return false;
     }
 }
