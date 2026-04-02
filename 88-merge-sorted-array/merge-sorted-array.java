@@ -1,6 +1,11 @@
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         if(nums2==null) return;
+        if(nums1==null){
+            for(int i=0;i<n;i++){
+                nums1[i] = nums2[i];
+            }
+        }
         for(int i=0;i<n;i++){
             nums1[m+i] = nums2[i];
         }
