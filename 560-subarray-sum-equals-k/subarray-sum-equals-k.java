@@ -1,12 +1,15 @@
 class Solution {
     public int subarraySum(int[] nums, int k) {
+        HashMap<Integer,Integer> hmap = new HashMap<>();
+        hmap.put(0,1);
         int cnt = 0;
+        int sum = 0;
         for(int i=0;i<nums.length;i++){
-            int sum = 0;
-            for(int j=i;j<nums.length;j++){
-                sum+=nums[j];
-                if(sum==k) cnt++;
+            sum+=nums[i];
+            if(hmap.containsKey(sum-k)){
+                cnt+=hmap.get(sum-k);
             }
+            hmap.put(sum, hmap.getOrDefault(sum,0)+1);
         }
         return cnt;
     }
