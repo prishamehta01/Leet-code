@@ -8,11 +8,10 @@ class Solution {
         int res=0;
         for(int key:map.keySet()){
             int value = map.get(key);
-            if(value>maxCnt){
-                maxCnt = value;
-                res = key;
+            if(value>nums.length/2){
+                return key;
             }
         }
-        return res;
+        return -1;
     }
 }
