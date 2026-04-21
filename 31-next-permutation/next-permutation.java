@@ -33,6 +33,5 @@ class Solution {
             }
         }
         reverse(nums,pivot+1,n-1);
-
     }
 }
