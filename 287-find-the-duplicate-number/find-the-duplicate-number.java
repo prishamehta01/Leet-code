@@ -1,12 +1,20 @@
 class Solution {
     public int findDuplicate(int[] nums) {
-        HashMap<Integer,Integer> hm = new HashMap<>();
-        for(int n:nums){
-            hm.put(n,hm.getOrDefault(n,0)+1);
+        int low = 1, high = nums.length - 1;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            int count = 0;
+
+            for (int num : nums) {
+                if (num <= mid) count++;
+            }
+
+            if (count > mid) {
+                high = mid; // Duplicate is in [low, mid]
+            } else {
+                low = mid + 1; // Duplicate is in [mid+1, high]
+            }
         }
-        for(Map.Entry<Integer,Integer> map: hm.entrySet()){
-            if(map.getValue()>1) return map.getKey();
-        }
-        return -1;
+        return low;
     }
 }
