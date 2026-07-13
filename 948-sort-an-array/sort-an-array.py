@@ -1,32 +1,26 @@
 class Solution:
-    def mergeSort(self,nums,low,high):
-        if low>=high:
-            return
-        mid = (low+high)//2
-        self.mergeSort(nums,low,mid)
-        self.mergeSort(nums,mid+1,high)
-        self.merge(nums,low,mid,high)
+    def mergeSort(self,nums):
+        if len(nums)<=1:
+            return nums
+        mid = len(nums)//2
+        left = self.mergeSort(nums[:mid])
+        right = self.mergeSort(nums[mid:])
+        return self.merge(left,right)
 
-    def merge(self,nums,low,mid,high):
-        left,right = low,mid+1
+    def merge(self,left,right):
+        i=j=0
         temp = []
-        while left<=mid and right<=high:
-            if nums[left]<=nums[right]:
-                temp.append(nums[left])
-                left+=1
+        while i < len(left) and j < len(right):
+            if left[i] <= right[j]:
+                temp.append(left[i])
+                i += 1
             else:
-                temp.append(nums[right])
-                right+=1
-        while left<=mid:
-            temp.append(nums[left])
-            left+=1
-        while right<=high:
-            temp.append(nums[right])
-            right+=1
-        for i in range(len(temp)):
-            nums[i+low] = temp[i]
+                temp.append(right[j])
+                j += 1
+        temp.extend(left[i:])
+        temp.extend(right[j:])
+        return temp
         
 
     def sortArray(self, nums: List[int]) -> List[int]:
-        self.mergeSort(nums,0,len(nums)-1)
-        return nums
+        return self.mergeSort(nums)
