@@ -14,8 +14,7 @@ class Solution:
             mid = low + (high-low)//2
             daysNeeded = self.daysRequired(weights,mid)
             if daysNeeded<=days:
-                ans = mid
                 high = mid-1
             else:
                 low = mid+1
-        return ans
+        return low
