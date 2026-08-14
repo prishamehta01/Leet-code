@@ -1,6 +1,12 @@
 class Solution:
     def findKthPositive(self, arr: List[int], k: int) -> int:
-        for num in arr:
-            if num<=k:
-                k+=1
-        return k
+        low,high = 0,len(arr)-1
+        while low<=high:
+            mid = low+(high-low)//2
+            noOfMissingEle = arr[mid]-(mid+1)
+            if noOfMissingEle<k:
+                low = mid+1
+            else:
+                high = mid-1
+        return low+k
+        
