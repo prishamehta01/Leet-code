@@ -3,17 +3,23 @@ class Solution {
         int n1 = nums1.length;
         int n2 = nums2.length;
         int[] merged = new int[n1+n2];
-        int i=0;
-        for(int n:nums1){
-            merged[i++] = n;
+        int i=0,j=0,k=0;
+        while(i<n1 && j<n2){
+            if(nums1[i]<nums2[j]){
+                merged[k++] = nums1[i++];
+            }
+            else{
+                merged[k++] = nums2[j++];
+            }
         }
-        for(int n:nums2){
-            merged[i++] = n;
+        while(i<n1){
+            merged[k++] = nums1[i++];
         }
-        int newLen = n1+n2;
-        Arrays.sort(merged);
-        int medianIndex =  newLen/2;
-        double res = newLen%2==0?((merged[medianIndex]+merged[medianIndex-1])/2.0):merged[medianIndex];
+        while(j<n2){
+            merged[k++] = nums2[j++];
+        }
+        int medianIndex =  (n1+n2)/2;
+        double res = (n1+n2)%2==0?((merged[medianIndex]+merged[medianIndex-1])/2.0):merged[medianIndex];
         return res;
     }
 }
